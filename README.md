@@ -7,28 +7,28 @@
 |password|string|null: false|
 |username|string|null: false|
 ### Association
-- has_many :group, through: :post_group
-- has_many :post_group
+- has_many :groups, through: :posts_groups
+- has_many :posts_groups
 - has_many :comments
 
-groupテーブル
+## groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |groupname|text|null:false|
-|user_id|integer|null:false|
 ### Association
-- has_many :user, through: :post_group
-- has_many :posts_group
+- has_many :users, through: :posts_groups
+- has_many :posts_groups
 - has_many :comments
 
 
-## posts_groupテーブル
+## posts_groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null:false|
+|group_id|integer|null:false|
 ### Association
-- belongs_to :group
-- belongs_to :user
+- belongs_to :groups
+- belongs_to :users
 
 ## commentsテーブル
 |Column|Type|Options|
@@ -39,5 +39,5 @@ groupテーブル
 |group_id|integer|null: false, foreign_key: true|
 |postingtime|text|null: false|
 ### Association
-- belongs_to :group
-- belongs_to :user
+- belongs_to :groups
+- belongs_to :users
