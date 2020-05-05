@@ -1,0 +1,18 @@
+.side-bar
+  .side-bar__user-name
+    .side-box
+      .side-box__name
+        %p name  
+      .side-box__icons
+        = link_to "#", class: "side-box__icons side-box__icons--edit" do
+          = icon('fas', 'edit', class: "side-box__icons--icon")
+        = link_to "#", class: "side-box__icons side-box__icons--cog" do
+          = icon('fas', 'cog', class: "side-box__icons--icon")
+      
+  .side-bar__group-list
+    .side-groupbox
+      .side-groupbox__title
+        %p title
+      .side-groupbox__message
+        %p message
+    
