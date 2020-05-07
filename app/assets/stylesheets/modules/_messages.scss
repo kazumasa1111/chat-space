@@ -6,6 +6,7 @@
   height: 100vh;
   .side-bar {
     width: 300px;
+    float: left;
     &__user-name {
       background-color: #253141;
       height: 100px;
@@ -35,16 +36,17 @@
     &__group-list {
       background-color: #2f3e51;
       height: calc(100vh - 100px);
-      display: flex;
+      padding: 20px 20px 0;
       .side-groupbox {
-        height: 100px;
-        margin: 0 20px;
         width: 100%;
+        margin-bottom: 40px;
+        .none {
+          text-decoration: none;
+        }
         &__title {
           color: #ffffff;
           font-size: 15px;
-          margin: 20px 0 5px 0;
-          line-height: 20px;
+          margin-bottom: 5px;
         }
         &__message {
           color: #ffffff;
