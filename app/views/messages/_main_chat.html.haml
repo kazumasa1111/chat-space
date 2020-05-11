@@ -2,39 +2,20 @@
   .chat-main__group-info
     .main-top
       .main-top__info
-        test
+        = @group.name
         .main-top__info--p
-          MENBER:test
+          MENBER:
+          - @group.users.each do |user|
+            = user.name
       .main-top__edit
-        = link_to "Edit", "#", class: "main-top__edit--a" 
+        = link_to "Edit", edit_group_path(@group), class: "main-top__edit--a" 
   .chat-main__message-list
-    .main-list
-      .main-list__name
-        name
-      .main-list__date
-        2020/05/02/15:00
-    .main-message
-      こんにちは
-    .main-list
-      .main-list__name
-        name2
-      .main-list__date
-        2020/05/02/16:00
-    .main-message
-      hello world
-    .main-list
-      .main-list__name
-        name3
-      .main-list__date
-        2020/05/02/17:00
-    .main-message
-      test
+    = render @messages
   .chat-main__message-form
-    .from-comment
-      .from-comment__new
-        %input{placeholder:"type a message", class:"from-comment__new--text", type:"text",}
-        %label{class: "from-comment__new--image"}
-          = icon('fas', 'image')
-          %input{type: "file", class:"from-comment__new--image--file"}
-      .from-comment__send
-        %input{type:"submit", value:"Send", class:"from-comment__send--btn"}
+    = form_for [:group, @message] do |f|
+      .form-content
+        = f.text_field :content, placeholder: 'type a message', class: 'form-content__message'
+        = f.label :image, class: 'form-content__image' do
+          = icon('fas', 'image', class: 'icon')
+          = f.file_field :image, class: 'hidden'
+      = f.submit 'Send', class:"form-content__send"

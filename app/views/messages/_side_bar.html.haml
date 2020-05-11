@@ -12,9 +12,9 @@
   .side-bar__group-list
     - current_user.groups.each do |group|
       .side-groupbox
-        = link_to '#', class: "none" do
+        = link_to group_messages_path(group) do
           .side-groupbox__title
             = group.name
           .side-groupbox__message
-            メッセージはまだありません。
+            = group.show_last_message
     
