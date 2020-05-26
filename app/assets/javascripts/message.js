@@ -2,7 +2,7 @@ $(function(){
     function buildHTML(message){
       if (message.image) {
         var html =
-          `<div class="message" data-message-id=${ message.id }>
+          `<div class="message">
             <div class="main-list">
               <div class="main-list__name">
                 ${message.user_name}
@@ -21,7 +21,7 @@ $(function(){
         return html;
       } else {
         var html =
-        `<div class="message" data-message-id=${ message.id }>
+        `<div class="message">
             <div class="main-list">
               <div class="main-list__name">
                 ${message.user_name}
@@ -82,16 +82,13 @@ $(function(){
         $.each(messages, function(i, message) {
           insertHTML += buildHTML(message)
         });
-        //メッセージが入ったHTMLに、入れ物ごと追加
+        //メッセージが入ったHTMLに、入れ物ごと追加。
         $('.chat-main__message-list').append(insertHTML);
         $('.chat-main__message-list').animate({ scrollTop: $('.chat-main__message-list')[0].scrollHeight});
-      }
-    })
-    .fail(function() {
-      alert('error');
-    });
-  };
-  if (document.location.href.match(/\/groups\/\d+\/messages/)){
-    setInterval(reloadMessages, 7000);
-  }
+        $('.form-content__send').attr('disabled', false);
+      })
+      .fail(function(){
+        alert('error');
+      })
+  });
 });
